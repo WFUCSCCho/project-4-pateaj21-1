@@ -6,7 +6,7 @@
  *               to allow for ordering within the BST and includes methods for string
  *               representation and equality comparison.
  * @author: Aashi Patel
- * @date: September 26, 2024
+ * @date: December 5, 2024
  ****/
 
 import java.util.Objects;

@@ -1,3 +1,9 @@
+/******************
+        * @file: SeparateChainingHashTable.java
+        * @description: This class implements a hash table using separate chaining collision resolution technique. It provides a generic implementation of a hash table data structure with core operations like insert, remove, contains, and makeEmpty. The class dynamically resizes the hash table when it becomes too full, using prime number sizing for efficiency. It includes methods for hash calculation, rehashing, and finding prime numbers. The implementation supports storing and managing collections of elements with efficient average-case O(1) time complexity for basic operations.
+        * @author: Aashi Patel
+        * @date: December 5, 2024
+ **********************/
 import java.util.LinkedList;
 import java.util.List;
 

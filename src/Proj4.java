@@ -1,3 +1,9 @@
+/******************
+ * @file: Proj4.java
+ * @description: This is the main project driver class that performs performance analysis on the SeparateChainingHashTable. It reads a dataset from a specified input file, performs hash table operations under different list configurations (already sorted, shuffled, and reverse sorted). For each configuration, it measures and logs the performance of insertion, search, and deletion operations. The results are printed to the console and written to an analysis.txt file, providing insights into the hash table's performance characteristics under various input distributions.
+ * @author: Aashi Patel
+ * @date: December 5, 2024
+ **********************/
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
