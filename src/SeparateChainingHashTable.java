@@ -3,7 +3,7 @@ import java.util.List;
 
 // SeparateChaining Hash table class
 //
-// CONSTRUCTION: an approximate initial size or default of 101
+// CONSTRUCTION- an approximate initial size or default of 101
 //
 // ******************PUBLIC OPERATIONS*********************
 // void insert( x )       --> Insert x

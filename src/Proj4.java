@@ -18,7 +18,7 @@ public class Proj4 {
         String inputFileName = args[0];
         int numLines = Integer.parseInt(args[1]);
 
-        // For file input
+        // For file input.
         FileInputStream inputFileNameStream = null;
         Scanner inputFileNameScanner = null;
 

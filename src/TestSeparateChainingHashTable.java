@@ -5,7 +5,7 @@ public class TestSeparateChainingHashTable {
         long startTime = System.currentTimeMillis( );
 
         final int NUMS = 2000000; //
-        final int GAP  =   37; // GAP is the step size
+        final int GAP  =   37; // GAP is the step size.
 
         System.out.println( "Checking... (no more output means success)" );
 
