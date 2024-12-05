@@ -1,6 +1,8 @@
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Collections;
@@ -9,7 +11,7 @@ public class Proj4 {
     public static void main(String[] args) throws IOException {
         // Use command line arguments to specify the input file
         if (args.length != 2) {
-            System.err.println("Usage: java TestAvl <input file> <number of lines>");
+            System.err.println("Usage: java Proj4 <input file> <number of lines>");
             System.exit(1);
         }
 
@@ -20,14 +22,79 @@ public class Proj4 {
         FileInputStream inputFileNameStream = null;
         Scanner inputFileNameScanner = null;
 
-        // Open the input file
-        inputFileNameStream = new FileInputStream(inputFileName);
-        inputFileNameScanner = new Scanner(inputFileNameStream);
+        // For performance logging
+        FileWriter analysisFileWriter = new FileWriter("analysis.txt", true);
+        PrintWriter analysisWriter = new PrintWriter(analysisFileWriter);
 
-        // ignore first line
-        inputFileNameScanner.nextLine();
+        try {
+            // Open the input file
+            inputFileNameStream = new FileInputStream(inputFileName);
+            inputFileNameScanner = new Scanner(inputFileNameStream);
 
-        // FINISH ME
+            // Ignore first line
+            inputFileNameScanner.nextLine();
 
+            // Read dataset into ArrayList
+            ArrayList<String> dataset = new ArrayList<>();
+            for (int i = 0; i < numLines && inputFileNameScanner.hasNextLine(); i++) {
+                dataset.add(inputFileNameScanner.nextLine());
+            }
+
+            // Performance testing for different list configurations
+            testHashTablePerformance(dataset, "Already Sorted", analysisWriter);
+
+            Collections.shuffle(dataset);
+            testHashTablePerformance(dataset, "Shuffled", analysisWriter);
+
+            Collections.sort(dataset, Collections.reverseOrder());
+            testHashTablePerformance(dataset, "Reversed", analysisWriter);
+
+            analysisWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (inputFileNameScanner != null) inputFileNameScanner.close();
+            if (inputFileNameStream != null) inputFileNameStream.close();
+        }
+    }
+
+    private static void testHashTablePerformance(ArrayList<String> dataset, String listType, PrintWriter writer) {
+        SeparateChainingHashTable<String> hashTable = new SeparateChainingHashTable<>();
+        int datasetSize = dataset.size();
+
+        // Insertion Performance
+        long insertStart = System.nanoTime();
+        for (String item : dataset) {
+            hashTable.insert(item);
+        }
+        long insertEnd = System.nanoTime();
+        double insertTime = (insertEnd - insertStart) / 1_000_000_000.0;
+
+        // Search Performance
+        long searchStart = System.nanoTime();
+        for (String item : dataset) {
+            hashTable.contains(item);
+        }
+        long searchEnd = System.nanoTime();
+        double searchTime = (searchEnd - searchStart) / 1_000_000_000.0;
+
+        // Deletion Performance
+        long deleteStart = System.nanoTime();
+        for (String item : dataset) {
+            hashTable.remove(item);
+        }
+        long deleteEnd = System.nanoTime();
+        double deleteTime = (deleteEnd - deleteStart) / 1_000_000_000.0;
+
+        // Print results to console
+        System.out.println(listType + " List Performance:");
+        System.out.println("Dataset Size: " + datasetSize);
+        System.out.println("Insertion Time: " + insertTime + " seconds");
+        System.out.println("Search Time: " + searchTime + " seconds");
+        System.out.println("Deletion Time: " + deleteTime + " seconds");
+        System.out.println();
+
+        // Write to CSV file
+        writer.printf("%s,%d,%.6f,%.6f,%.6f\n", listType, datasetSize, insertTime, searchTime, deleteTime);
     }
 }
