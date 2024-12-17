@@ -1,3 +1,10 @@
+/******************
+ * @file: TestSeparateChainingHashTable.java
+ * @description: This is a test driver class for the SeparateChainingHashTable implementation. It performs a comprehensive performance and correctness test by inserting a large number of integers (2 million) into the hash table using a specific step size. The test checks the hash table's ability to correctly insert, remove, and contain elements. It measures the time taken for these operations and verifies the integrity of the hash table by checking the presence and absence of specific elements after insertion and removal.
+ * @author: Aashi Patel
+ * @date: December 5, 2024
+ **********************/
+
 public class TestSeparateChainingHashTable {
     public static void main( String [ ] args ) {
         SeparateChainingHashTable<Integer> H = new SeparateChainingHashTable<>( );
@@ -5,7 +12,7 @@ public class TestSeparateChainingHashTable {
         long startTime = System.currentTimeMillis( );
 
         final int NUMS = 2000000; //
-        final int GAP  =   37; // GAP is the step size
+        final int GAP  =   37; // GAP is the step size.
 
         System.out.println( "Checking... (no more output means success)" );
 
