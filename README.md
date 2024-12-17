@@ -98,13 +98,18 @@ None. The dataset was used as provided from the Kaggle source.
 
 Result Analysis: 
 After running my hash table implementation with different-sized chunks of data (from 100 up to 1500 lines), I found some really interesting patterns:
-#### Insertion Performance 
-Sorted Data: Insertion was notably slower, with times increasing from 0.29ms for 100 lines to 4.89ms for 1300 lines. This aligns with expectations, as sorted data is more likely to cause clustering in the hash table.
-Shuffled Data: Performance remained efficient, with insert times ranging from 0.06ms to 1.23ms across all dataset sizes. This demonstrates the hash table's ability to handle random input effectively.
+Insertion Performance
+Sorted Data: Insertion was notably slower, with times increasing from 0.29ms for 100 lines to 4.89ms for 1300 lines. This aligns with expectations, as sorted data is more likely to cause clustering in the hash table. Shuffled Data: Performance remained efficient, with insert times ranging from 0.06ms to 1.23ms across all dataset sizes. This demonstrates the hash table's ability to handle random input effectively.
 Reversed Data: Similar to shuffled data, insert times ranged from 0.04ms to 0.93ms, showing consistent performance regardless of input order.
-#### Search and Delete Operations
+Search and Delete Operations
 Search and delete operations showed consistent performance across all data types and sizes, with search times varying between 0.02ms and 1.78ms.
 This aligns with the expected O(1) average-case time complexity for hash table operations when data is well-distributed.
+
+Key Observations
+Separate Chaining Effectiveness: The implementation handled collisions well, even with potentially problematic sorted input.
+Real-World Applicability: The hash table's performance with shuffled and reversed data demonstrates its efficiency in typical use cases where data is randomly distributed.
+Scalability: Operations remained fast even with larger datasets, showcasing the hash table's ability to handle increased data volumes efficiently.
+Theoretical Alignment: The results closely match theoretical expectations of hash table performance, particularly the O(1) average-case time complexity for well-distributed data.
 
 ## Submission:
 
