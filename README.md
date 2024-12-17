@@ -82,9 +82,6 @@ it to this repository.
 
 Insertion, search, and deletion running time (already sorted):
 
-![Firefly picture of a cat 86147](https://github.com/user-attachments/assets/8b2d008e-3011-4979-97b8-fa2e9886a01a)
-
-
 Insertion, search, and deletion running time (shuffled):
 
 Insertion, search, and deletion running time (reversed):
@@ -93,11 +90,21 @@ Insertion, search, and deletion running time (reversed):
 Document the source of your dataset and any modifications you made to it. Describe the results of your analysis and 
 how it compares to the theoretical performance of the hash table operations.
 
-Dataset Source: // FINISH ME
+Dataset Source: 
+The dataset used in this project is Taylor Swift's discography from Kaggle. It contains information about Taylor Swift's songs, including album names, track titles, release years, and other relevant details.
 
-Dataset Modifications ("None" if unchanged): // FINISH ME
+Dataset Modifications ("None" if unchanged): 
+None. The dataset was used as provided from the Kaggle source.
 
-Result Analysis: // FINISH ME
+Result Analysis: 
+After running my hash table implementation with different-sized chunks of data (from 100 up to 1500 lines), I found some really interesting patterns:
+#### Insertion Performance
+######  Sorted Data: Insertion was notably slower, with times increasing from 0.29ms for 100 lines to 4.89ms for 1300 lines. This aligns with expectations, as sorted data is more likely to cause clustering in the hash table.
+###### Shuffled Data: Performance remained efficient, with insert times ranging from 0.06ms to 1.23ms across all dataset sizes. This demonstrates the hash table's ability to handle random input effectively.
+###### Reversed Data: Similar to shuffled data, insert times ranged from 0.04ms to 0.93ms, showing consistent performance regardless of input order.
+#### Search and Delete Operations
+Search and delete operations showed consistent performance across all data types and sizes, with search times varying between 0.02ms and 1.78ms.
+This aligns with the expected O(1) average-case time complexity for hash table operations when data is well-distributed.
 
 ## Submission:
 
